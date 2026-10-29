@@ -1,0 +1,86 @@
+{
+  "title": "n8n Model Orchestration Platform",
+  "intro": "> \"Where I teach computers to be smart so I don't have to be.\"\n\nA comprehensive platform for orchestrating fine-tuning of open-source language models using private data across multiple VPS providers, with built-in cost management and monitoring capabilities.",
+  "sections": [
+    {
+      "title": "Overview",
+      "body": "This platform provides an end-to-end solution for:\n\n- **Fine-tuning LLMs**: Support for Llama, GPT-Neo, Mistral, Falcon, and other open-source models\n- **Multi-Provider Management**: Seamless integration with RunPod, Vast.ai, Lambda Labs, Modal, and more\n- **Cost Optimization**: Real-time cost tracking, forecasting, and optimization recommendations\n- **n8n Orchestration**: Powerful workflow automation for complex ML pipelines\n- **Private Data Handling**: Secure management of proprietary training datasets\n- **Pay-Per-Use Model**: Optimize costs with flexible VPS provider selection"
+    },
+    {
+      "title": "Key Features",
+      "body": "### 🚀 Training Orchestration\n- Automated provider selection based on cost and availability\n- Support for full fine-tuning, LoRA, and QLoRA\n- Real-time progress monitoring and metrics\n- Automatic checkpointing and recovery\n- Distributed training support\n\n### 💰 Cost Management\n- Real-time cost tracking across all providers\n- Budget management with alerts and hard limits\n- Cost forecasting using ML models\n- Optimization recommendations\n- Detailed cost breakdowns and analytics\n\n### 🔧 Provider Management\n- Unified interface for 6+ VPS providers\n- Automatic failover and retry logic\n- Health monitoring and alerting\n- Dynamic pricing and availability tracking\n- Spot instance support\n\n### 📊 Comprehensive UI\n- Modern React dashboard with real-time updates\n- Visual workflow designer (n8n integration)\n- Cost analytics and visualization\n- Dataset and model management\n- Team collaboration features\n\n### 🔐 Security & Privacy\n- End-to-end encryption for private data\n- RBAC and multi-tenant isolation\n- Secure credential management with Vault\n- Audit logging and compliance\n\n### 📈 Monitoring & Observability\n- Prometheus metrics collection\n- Grafana dashboards\n- Real-time WebSocket updates\n- Comprehensive logging\n- Alert management"
+    },
+    {
+      "title": "Documentation",
+      "body": "### Core Documentation\n\n- **[ARCHITECTURE.md](./ARCHITECTURE.md)** - System architecture and design overview\n- **[VPS_PROVIDERS.md](./VPS_PROVIDERS.md)** - Provider integration specifications\n- **[COST_MANAGEMENT.md](./COST_MANAGEMENT.md)** - Cost tracking and optimization\n- **[UI_DESIGN.md](./UI_DESIGN.md)** - Frontend UI/UX specifications\n- **[N8N_WORKFLOWS.md](./N8N_WORKFLOWS.md)** - Workflow automation designs\n- **[API_SPECIFICATIONS.md](./API_SPECIFICATIONS.md)** - RESTful API documentation\n- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Deployment and infrastructure guide\n\n### Quick Links\n\n- [Getting Started](#getting-started)\n- [Supported Models](#supported-models)\n- [VPS Providers](#vps-providers)\n- [Cost Comparison](#cost-comparison)\n- [Roadmap](#roadmap)\n- [Contributing](#contributing)"
+    },
+    {
+      "title": "Architecture Overview",
+      "body": "```\n┌─────────────────────────────────────────────────────────────┐\n│                     User Interface (React)                   │\n│  Dashboard • Jobs • Models • Datasets • Cost • Providers    │\n└─────────────────────────────────────────────────────────────┘\n                           │\n┌─────────────────────────────────────────────────────────────┐\n│                      API Gateway (FastAPI)                   │\n│  Authentication • Rate Limiting • Request Validation        │\n└─────────────────────────────────────────────────────────────┘\n                           │\n┌─────────────────────────────────────────────────────────────┐\n│                   n8n Orchestration Layer                    │\n│  Job Management • Cost Tracking • Provider Selection        │\n└─────────────────────────────────────────────────────────────┘\n                           │\n┌─────────────────────────────────────────────────────────────┐\n│                    VPS Provider Layer                        │\n│  RunPod • Vast.ai • Lambda • Modal • TensorDock • CoreWeave│\n└─────────────────────────────────────────────────────────────┘\n```"
+    },
+    {
+      "title": "Technology Stack",
+      "body": "### Backend\n- **Python 3.11+**: Core API and services\n- **FastAPI**: REST API framework\n- **PostgreSQL**: Primary database\n- **TimescaleDB**: Time-series metrics\n- **Redis**: Caching and job queues\n- **n8n**: Workflow orchestration\n- **MinIO**: Object storage\n\n### Frontend\n- **React 18**: UI framework\n- **TypeScript**: Type safety\n- **TailwindCSS**: Styling\n- **Recharts**: Data visualization\n- **React Query**: State management\n- **Socket.io**: Real-time updates\n\n### Infrastructure\n- **Docker**: Containerization\n- **Kubernetes**: Orchestration\n- **Prometheus**: Metrics\n- **Grafana**: Visualization\n- **Terraform**: Infrastructure as code"
+    },
+    {
+      "title": "Getting Started",
+      "body": "### Prerequisites\n\n- Docker 24.0+\n- Docker Compose 2.20+\n- Node.js 18+ (for local frontend development)\n- Python 3.11+ (for local backend development)\n\n### Quick Start\n\n1. **Clone the repository**\n```bash\ngit clone https://github.com/your-org/ml-orchestration-platform.git\ncd ml-orchestration-platform\n```\n\n2. **Configure environment**\n```bash\ncp .env.example .env\n# Edit .env with your API keys and configuration\n```\n\n3. **Start services**\n```bash\ndocker-compose up -d\n```\n\n4. **Access the platform**\n- Frontend: http://localhost:3000\n- API Docs: http://localhost:8000/docs\n- n8n: http://localhost:5678\n\n5. **Create your first training job**\n- Navigate to http://localhost:3000\n- Upload a dataset\n- Select a model\n- Configure training parameters\n- Submit job and monitor progress\n\nFor detailed setup instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md)."
+    },
+    {
+      "title": "Supported Models",
+      "body": "### Language Models\n\n| Model | Size | Use Case | Recommended GPU |\n|-------|------|----------|----------------|\n| Llama 2 | 7B, 13B, 70B | General purpose | A100, H100 |\n| Mistral | 7B | Fast inference | RTX 4090, A100 |\n| GPT-Neo | 1.3B, 2.7B, 20B | Cost-effective | RTX 3090, A100 |\n| Falcon | 7B, 40B, 180B | Long context | A100, H100 |\n| Qwen | 1.8B, 7B, 14B, 72B | Multilingual | A100 |\n| DeepSeek | 1.3B, 7B, 33B | Code generation | RTX 4090, A100 |\n\n### Training Methods\n\n- **Full Fine-tuning**: Complete model parameter updates\n- **LoRA**: Low-rank adaptation (efficient, recommended)\n- **QLoRA**: Quantized LoRA (most cost-effective)\n- **Prefix Tuning**: Lightweight adaptation\n- **Adapter Layers**: Modular fine-tuning"
+    },
+    {
+      "title": "VPS Providers",
+      "body": "### Supported Providers\n\n| Provider | GPU Types | Billing | Price Range | Availability |\n|----------|-----------|---------|-------------|--------------|\n| **RunPod** | RTX 3090, 4090, A100, H100 | Per-second | $0.39-$4.99/hr | High |\n| **Vast.ai** | Various (marketplace) | Per-hour | $0.10-$5.00/hr | High |\n| **Lambda Labs** | RTX 6000, A100, H100 | Per-minute | $0.60-$13.20/hr | Medium |\n| **Modal** | A100, H100 | Per-second | $0.00003-$0.00006/sec | High |\n| **TensorDock** | RTX 3060-4090, A100 | Per-hour | $0.19-$2.39/hr | Medium |\n| **CoreWeave** | A100, H100 | Per-hour | Enterprise | Medium |\n\nFor detailed provider specifications, see [VPS_PROVIDERS.md](./VPS_PROVIDERS.md)."
+    },
+    {
+      "title": "Cost Comparison",
+      "body": "### Example: Fine-tuning Llama 2 7B (LoRA)\n\n| Provider | GPU | Duration | Cost | Notes |\n|----------|-----|----------|------|-------|\n| RunPod | 4x A100 | 4 hours | $21.60 | Spot available |\n| Vast.ai | 4x A100 | 4 hours | $16.20 | Community hosts |\n| Lambda Labs | 4x A100 | 4 hours | $17.60 | Reliable |\n| Modal | 4x A100 | 4 hours | $19.44 | Serverless |\n\n**Estimated savings with optimization**: 15-30% through automatic provider selection\n\nFor detailed cost analysis, see [COST_MANAGEMENT.md](./COST_MANAGEMENT.md)."
+    },
+    {
+      "title": "Core Workflows",
+      "body": "### 1. Training Job Lifecycle\n\n```\nSubmit Job → Validate → Check Budget → Select Provider →\nProvision Resources → Upload Data → Train → Monitor →\nSave Checkpoints → Complete → Cleanup → Store Model\n```\n\n### 2. Cost Tracking\n\n```\nJob Starts → Track Cost (every 30s) → Check Budget →\nAlert if Threshold → Stop if Hard Limit → Finalize Cost\n```\n\n### 3. Provider Health Monitoring\n\n```\nSchedule (5 min) → Check API Health → Check Availability →\nCalculate Score → Update Status → Alert if Down\n```\n\nFor complete workflow specifications, see [N8N_WORKFLOWS.md](./N8N_WORKFLOWS.md)."
+    },
+    {
+      "title": "API Examples",
+      "body": "### Create Training Job\n\n```python\nimport requests\n\nresponse = requests.post(\n    'http://localhost:8000/v1/jobs',\n    headers={'Authorization': 'Bearer YOUR_TOKEN'},\n    json={\n        'name': 'llama-2-7b-custom',\n        'model_name': 'meta-llama/Llama-2-7b-hf',\n        'dataset_id': 'ds_123',\n        'training_config': {\n            'training_type': 'lora',\n            'epochs': 10,\n            'batch_size': 4,\n            'learning_rate': 2e-5\n        }\n    }\n)\n\njob = response.json()\nprint(f\"Job created: {job['id']}\")\n```\n\n### Monitor Progress\n\n```javascript\nimport { io } from 'socket.io-client';\n\nconst socket = io('ws://localhost:8000', {\n  auth: { token: 'YOUR_TOKEN' }\n});\n\nsocket.on('job:status', (data) => {\n  console.log(`Progress: ${data.progress}%`);\n  console.log(`Cost: $${data.current_cost}`);\n});\n```\n\nFor complete API documentation, see [API_SPECIFICATIONS.md](./API_SPECIFICATIONS.md)."
+    },
+    {
+      "title": "Use Cases",
+      "body": "### 1. Customer Support Chatbot\nFine-tune Llama 2 7B on your support conversations to create a custom chatbot that understands your products and policies.\n\n**Dataset**: 50K customer conversations\n**Model**: Llama 2 7B with LoRA\n**Cost**: ~$20 per training run\n**Time**: 4-6 hours\n\n### 2. Code Generation\nAdapt DeepSeek Coder to your company's coding standards and internal APIs.\n\n**Dataset**: 100K code samples\n**Model**: DeepSeek Coder 7B\n**Cost**: ~$25 per training run\n**Time**: 5-7 hours\n\n### 3. Domain-Specific Q&A\nCreate a specialized model for medical, legal, or financial Q&A.\n\n**Dataset**: Domain-specific documents\n**Model**: Mistral 7B with LoRA\n**Cost**: ~$18 per training run\n**Time**: 3-5 hours\n\n### 4. Multilingual Translation\nFine-tune Qwen for high-quality translation in specific language pairs.\n\n**Dataset**: Parallel text corpus\n**Model**: Qwen 7B\n**Cost**: ~$22 per training run\n**Time**: 4-6 hours"
+    },
+    {
+      "title": "Roadmap",
+      "body": "### Phase 1: Core Platform (Q1 2025) ✓\n- [x] Multi-provider integration\n- [x] Cost tracking and management\n- [x] n8n workflow orchestration\n- [x] Basic UI\n- [x] API development\n\n### Phase 2: Advanced Features (Q2 2025)\n- [ ] Distributed training support\n- [ ] Model marketplace\n- [ ] Advanced optimization algorithms\n- [ ] Team collaboration features\n- [ ] Enhanced security features\n\n### Phase 3: Enterprise Features (Q3 2025)\n- [ ] Multi-region deployment\n- [ ] Advanced analytics\n- [ ] Custom model serving\n- [ ] SLA guarantees\n- [ ] White-label options\n\n### Phase 4: ML Operations (Q4 2025)\n- [ ] AutoML integration\n- [ ] Hyperparameter optimization\n- [ ] A/B testing framework\n- [ ] Model versioning and rollback\n- [ ] Production deployment automation"
+    },
+    {
+      "title": "Performance Metrics",
+      "body": "### Platform Performance\n- **API Response Time**: <200ms (p95)\n- **Job Submission**: <5 seconds\n- **Real-time Updates**: <1 second latency\n- **System Uptime**: 99.9% target\n\n### Training Performance\n- **Llama 2 7B LoRA**: 4-6 hours (4x A100)\n- **Mistral 7B**: 3-5 hours (4x A100)\n- **Cost Optimization**: 15-30% savings vs single provider"
+    },
+    {
+      "title": "Security",
+      "body": "- **Encryption**: AES-256 at rest, TLS 1.3 in transit\n- **Authentication**: JWT with refresh tokens\n- **Authorization**: Role-based access control (RBAC)\n- **Compliance**: GDPR, SOC 2 ready\n- **Audit**: Comprehensive logging"
+    },
+    {
+      "title": "Contributing",
+      "body": "We welcome contributions! Please see our contributing guidelines:\n\n1. Fork the repository\n2. Create a feature branch (`git checkout -b feature/amazing-feature`)\n3. Commit your changes (`git commit -m 'Add amazing feature'`)\n4. Push to the branch (`git push origin feature/amazing-feature`)\n5. Open a Pull Request"
+    },
+    {
+      "title": "License",
+      "body": "This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details."
+    },
+    {
+      "title": "Support",
+      "body": "- **Documentation**: See docs folder\n- **Issues**: [GitHub Issues](https://github.com/your-org/ml-orchestration-platform/issues)\n- **Discussions**: [GitHub Discussions](https://github.com/your-org/ml-orchestration-platform/discussions)\n- **Email**: support@mlplatform.com"
+    },
+    {
+      "title": "Acknowledgments",
+      "body": "This project integrates with and is inspired by many amazing tools:\n\n- **n8n**: Workflow automation\n- **Hugging Face**: Model hub and transformers\n- **Ray**: Distributed computing\n- **Weights & Biases**: Experiment tracking\n- All the VPS providers who make GPU compute accessible"
+    },
+    {
+      "title": "Team",
+      "body": "- **Architecture**: [Your Name]\n- **Backend**: [Developer Names]\n- **Frontend**: [Developer Names]\n- **DevOps**: [Developer Names]\n\n---\n\n**Built with ❤️ for the ML community**\n\n*Making fine-tuning accessible, affordable, and automated.*"
+    }
+  ]
+}
