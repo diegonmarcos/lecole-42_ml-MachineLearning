@@ -5,6 +5,7 @@
   "label": "lecole-42_ml-MachineLearning",
   "code": "5.8.1.1",
   "kind": "repo",
+  "variant": "repo",
   "description": "\"Where I teach computers to be smart so I don't have to be.\"",
   "visibility": "public",
   "url": "https://github.com/diegonmarcos/lecole-42_ml-MachineLearning",
